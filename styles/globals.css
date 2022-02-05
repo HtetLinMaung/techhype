@@ -1,9 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "Sofia Pro";
+  src: url("/fonts/sofia/Sofia Pro Regular Az.otf") format("truetype");
+}
+
+@font-face {
+  font-family: "Cubano";
+  src: url("/fonts/cubano/Cubano.ttf") format("truetype");
+}
+
 html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: "Sofia Pro", sans-serif;
+  /* background-color: #12181b; */
+  background-color: #3a4366;
+  color: white;
+}
+nav {
+  /* background-color: #3a4366; */
+  background-color: #1f2743;
+}
+
+h1 {
+  font-family: "Cubano", sans-serif;
 }
 
 a {
@@ -13,4 +37,32 @@ a {
 
 * {
   box-sizing: border-box;
+}
+
+.lesson-card {
+  background-color: #1f2743;
+  /* background-color: #2a2e35; */
+}
+
+.tag-vscode {
+  background: #00a3f8;
+  color: white;
+}
+.tag-firebase {
+  background: #ffcb2b;
+  color: #12181a;
+}
+
+.tag {
+  border-radius: 2px;
+}
+.tag-last-updated {
+  background-color: #454e56;
+}
+
+.btn-code {
+  background-color: #f6f8fa;
+}
+.btn-discord {
+  background-color: #5965f2;
 }
