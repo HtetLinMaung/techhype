@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { appContext } from "../../../../contexts/AppProvider";
-import { getTranslatation } from "../../../../utils/language-translator";
+import { getTranslation } from "../../../../utils/language-translator";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -26,13 +26,13 @@ export default function VscodeTopTip() {
 
   return (
     <div className="container mx-auto px-4 pt-10 text-xl">
-      <h1 className="text-6xl my-12 pb-7 text-center">
-        {getTranslatation(state.lang, "VSCODE Top Tips")}
+      <h1 className="text-6xl my-12 pb-7 text-center center-title">
+        {getTranslation(state.lang, "VSCODE Top Tips")}
       </h1>
 
       <div className="flex">
         <section className="w-3/4">
-          <div className="lesson-card overflow-hidden w-full rounded-xl shadow-lg inline-flex flex-col">
+          <div className="lesson-card bluish-color overflow-hidden w-full rounded-xl shadow-lg inline-flex flex-col">
             <Image
               src={item.image}
               alt={item.title}
@@ -43,7 +43,7 @@ export default function VscodeTopTip() {
             <div className="p-5 flex">
               <div className="p-2">
                 <p className="text-lg leading-10  text-gray-300 my-5">
-                  {getTranslatation(state.lang, item.description)}
+                  {getTranslation(state.lang, item.description)}
                 </p>
                 <div className="my-5 flex">
                   <div className="mr-2">
@@ -119,17 +119,265 @@ export default function VscodeTopTip() {
               </div>
             </div>
           </div>
-
           <p className="text-lg leading-10  text-gray-300 my-5">
-            {getTranslatation(
+            {getTranslation(
               state.lang,
-              "Most of us think Vscode is a simple code editor. But it's not. To open project in your editor, you pull up your file explorer and then click open with Vscode. But you can do it more quickly from command line."
+              "Most of us think VS Code is a simple code editor. But it's not. To open project in your editor, you pull up your file explorer and then click open with VS Code. But you can do it more quickly from command line."
             )}
           </p>
+          <h1 className="my-6 text-2xl text-gray-300">
+            {getTranslation(state.lang, "Launching from the command line")}
+          </h1>
+          <p className="text-lg leading-10  text-gray-300 my-5">
+            {getTranslation(
+              state.lang,
+              "You can also run VS Code from the command line by typing 'code'. But in Mac & Linux, you need to add VS Code executable to your PATH environment variable."
+            )}
+          </p>
+          <div className="inline-flex bluish-color text-lg text-gray-300 p-2 pr-5 rounded-t-md shadow-lg">
+            <svg
+              aria-hidden="true"
+              data-prefix="fas"
+              data-icon="terminal"
+              role="img"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 640 512"
+              className="svgterminal w-6 h-6 mr-2"
+            >
+              <path
+                fill="currentColor"
+                d="M257.981 272.971L63.638 467.314c-9.373 9.373-24.569 9.373-33.941 0L7.029 444.647c-9.357-9.357-9.375-24.522-.04-33.901L161.011 256 6.99 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L257.981 239.03c9.373 9.372 9.373 24.568 0 33.941zM640 456v-32c0-13.255-10.745-24-24-24H312c-13.255 0-24 10.745-24 24v32c0 13.255 10.745 24 24 24h304c13.255 0 24-10.745 24-24z"
+              ></path>
+            </svg>{" "}
+            command line
+          </div>
+          <div className="p-5 mb-4 bluish-color shadow-lg rounded-r-xl rounded-b-xl ">
+            <pre className="code-font text-base text-gray-300 font-normal">
+              <span className="text-gray-500">
+                {"# open current directory \n"}
+              </span>
+              code . {"\n\n"}
+              <span className="text-gray-500">{"# open index.ts file\n"}</span>
+              code index.ts
+            </pre>
+          </div>
+          <h1 className="my-6 text-2xl text-gray-300">Searching for files</h1>
+          <p className="text-lg leading-10  text-gray-300 my-5">
+            You can search files quickly with Command Palette by typing CTRL + P
+            or Command + P. It is quicker than trying to find the files in your
+            file explorer.
+          </p>
+          <video
+            src="/movies/CommandPallete.mov"
+            muted
+            onMouseOver={(e) => {
+              e.target.play();
+            }}
+          ></video>
+          <h1 className="my-6 text-2xl text-gray-300">Running Commands</h1>
+          <p className="text-lg leading-10  text-gray-300 my-5">
+            Command Palette can do more than finding files. If you type right
+            angle bracket {"'>'"}, it will give you access to all the commands
+            you can run on VS Code.
+          </p>
+          <video
+            src="/movies/CommandPallete2.mov"
+            muted
+            onMouseOver={(e) => {
+              e.target.play();
+            }}
+          ></video>
+          <h1 className="my-6 text-2xl text-gray-300">Finding with CTRL + F</h1>
+          <p className="text-lg leading-10  text-gray-300 my-5">
+            When working in a big file, the worst thing you do is scroll around
+            the page and looking for functions or interfaces. You can type CTRL
+            + F or Command + F to find the things you need.
+          </p>
+          <video
+            src="/movies/CtrlF.mov"
+            muted
+            onMouseOver={(e) => {
+              e.target.play();
+            }}
+          ></video>
+          <h1 className="my-6 text-2xl text-gray-300">Finding with symbols</h1>
+          <p className="text-lg leading-10  text-gray-300 my-5">
+            You can also use symbols in Command Palette to find things. With{" "}
+            {"'@'"} symbol, you can get symbol list to quickly navigate around
+            the page. You can also type CTRL + SHIFT + . or COMMAND + SHIFT + .
+            to do the same thing. But sometime you want to find symbol
+            throughout the entire project. You can also type {"'#'"} symbol in
+            Command Pallete to get a list of all symbols.
+          </p>
+          <video
+            src="/movies/Symbol.mov"
+            muted
+            onMouseOver={(e) => {
+              e.target.play();
+            }}
+          ></video>
 
           <h1 className="my-6 text-2xl text-gray-300">
-            Open from command line
+            Line Number search & highlighting
           </h1>
+
+          <p className="text-lg leading-10  text-gray-300 my-5">
+            You can jump to specific line by typing CTRL + G followed by line
+            number. From there you can highlight the line by holding SHIFT +
+            ARROW key.
+          </p>
+
+          <video
+            src="/movies/LineNumber.mov"
+            muted
+            onMouseOver={(e) => {
+              e.target.play();
+            }}
+          ></video>
+
+          <h1 className="my-6 text-2xl text-gray-300">Multiline Editing</h1>
+
+          <p className="text-lg leading-10  text-gray-300 my-5">
+            If you find the word you want to edit, type CTRL + D or COMMAND + D
+            to select it. If this word or code is multiple occurance, you can
+            edit them all by pressing CTRL + D or COMMAND + D multiple times.
+            Holding down ALT + CLICK or OPTION + CLICK with mouse can also be
+            used for multiline editing like renaming tags. But you can make it
+            more easier by using Auto Rename Tag extension.
+          </p>
+
+          <video
+            src="/movies/Multiline.mov"
+            muted
+            onMouseOver={(e) => {
+              e.target.play();
+            }}
+          ></video>
+
+          <h1 className="my-6 text-2xl text-gray-300">Cutting & moving</h1>
+
+          <p className="text-lg leading-10  text-gray-300 my-5">
+            You {"don't"} need to select a line to cut it. You can just type
+            CTRL + X or COMMAND + X to cut the line. But if your goal is to move
+            a line, just type ALT + UP / DOWN or OPTION + UP / DOWN.
+          </p>
+
+          <video
+            src="/movies/Cut.mov"
+            muted
+            onMouseOver={(e) => {
+              e.target.play();
+            }}
+          ></video>
+
+          <h1 className="my-6 text-2xl text-gray-300">Toggling comments</h1>
+          <p className="text-lg leading-10  text-gray-300 my-5">
+            You can toggle comments by first highlighting your codes and typing
+            CTRL + / or COMMAND + /. You can make your comments more easier to
+            read with Better Comments Extension.
+          </p>
+          <video
+            src="/movies/Comments.mov"
+            muted
+            onMouseOver={(e) => {
+              e.target.play();
+            }}
+          ></video>
+          <h1 className="my-6 text-2xl text-gray-300">Integrated Terminal</h1>
+          <p className="text-lg leading-10  text-gray-300 my-5">
+            You can open terminal directly in VS Code by typing CTRL + `. You
+            can also rename your terminal and change color or icon. To clear
+            terminal you can type CTRL + K or COMMAND + K.
+          </p>
+          <video
+            src="/movies/Terminal.mov"
+            muted
+            onMouseOver={(e) => {
+              e.target.play();
+            }}
+          ></video>
+          <h1 className="my-6 text-2xl text-gray-300">Running Tasks</h1>
+          <p className="text-lg leading-10  text-gray-300 my-5">
+            If you have to run repeated commands. You can configure tasks in VS
+            Code.
+          </p>
+          <video
+            src="/movies/Task.mov"
+            muted
+            onMouseOver={(e) => {
+              e.target.play();
+            }}
+          ></video>
+          <h1 className="my-6 text-2xl text-gray-300">Source Control</h1>
+          <p className="text-lg leading-10  text-gray-300 my-5">
+            You {"don't"} need to know complex git commands. VS Code give all
+            the possible commands for you.
+          </p>
+          <video
+            src="/movies/SourceControl.mov"
+            muted
+            onMouseOver={(e) => {
+              e.target.play();
+            }}
+          ></video>
+          <h1 className="my-6 text-2xl text-gray-300">Remote SSH Extension</h1>
+          <p className="text-lg leading-10  text-gray-300 my-5">
+            Sometime you want to develop on the same operating system you deploy
+            or use more high performance than your local machine. You can use
+            Remote SSH Extension.
+          </p>
+          <video
+            src="/movies/SSH.mov"
+            muted
+            onMouseOver={(e) => {
+              e.target.play();
+            }}
+          ></video>
+          <h1 className="my-6 text-2xl text-gray-300">Auto-Create folders</h1>
+          <p className="text-lg leading-10  text-gray-300 my-5">
+            You can also create files in directories that {"doesn't"} exist yet.
+            Just type /foldername/filename. It will auto create folders for you.
+          </p>
+          <video
+            src="/movies/AutoCreate.mov"
+            muted
+            onMouseOver={(e) => {
+              e.target.play();
+            }}
+          ></video>
+          <h1 className="my-6 text-2xl text-gray-300">
+            Paste JSON as Code Extension
+          </h1>
+          <p className="text-lg leading-10  text-gray-300 my-5">
+            When writing typescript code, declaring types and schemas for JSON
+            data is very time consuming. This extension will automatically
+            create types from JSON.
+          </p>
+          <video
+            src="/movies/PasteJson.mov"
+            muted
+            onMouseOver={(e) => {
+              e.target.play();
+            }}
+          ></video>
+          <h1 className="my-6 text-2xl text-gray-300">Renaming</h1>
+          <p className="text-lg leading-10  text-gray-300 my-5">
+            Sometime you want to rename a function for a whole project because
+            of bad naming. The first thing you would do is find the whole
+            projects and rename it. It can be dangerous. The better idea is find
+            the function or name you want to edit and then right click it. There
+            you can find its all references and implementations. From there you
+            can use rename symbol options to rename it accross all of your
+            files.
+          </p>
+
+          <video
+            src="/movies/Translate.mov"
+            muted
+            onMouseOver={(e) => {
+              e.target.play();
+            }}
+          ></video>
         </section>
         <aside className=""></aside>
       </div>

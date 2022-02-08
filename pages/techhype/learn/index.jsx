@@ -2,7 +2,10 @@ import Image from "next/image";
 import Link from "next/link";
 import { useContext, useEffect, useState } from "react";
 import { appContext } from "../../../contexts/AppProvider";
-import { getTranslatation } from "../../../utils/language-translator";
+import {
+  getTranslatation,
+  getTranslation,
+} from "../../../utils/language-translator";
 
 const items = [
   {
@@ -34,7 +37,7 @@ export default function Learn() {
         {items.map((item, i) => (
           <div
             key={i}
-            className="lesson-card overflow-hidden max-w-md rounded-xl shadow-lg inline-flex flex-col hover:-translate-y-2 ease-in-out duration-300"
+            className="lesson-card bluish-color overflow-hidden max-w-md rounded-xl shadow-lg inline-flex flex-col hover:-translate-y-2 ease-in-out duration-300"
           >
             <Link href={item.href} passHref>
               <Image
@@ -47,10 +50,10 @@ export default function Learn() {
             </Link>
             <div className="p-5">
               <h1 className="text-2xl my-5">
-                {getTranslatation(state.lang, item.title)}
+                {getTranslation(state.lang, item.title)}
               </h1>
               <p className="text-xl leading-10  text-gray-300 my-5">
-                {getTranslatation(state.lang, item.description)}
+                {getTranslation(state.lang, item.description)}
               </p>
               {item.tags.map((tag, i) => (
                 <Link key={`tag${i}`} href={tag.href} passHref>

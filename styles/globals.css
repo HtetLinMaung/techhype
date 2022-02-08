@@ -12,6 +12,11 @@
   src: url("/fonts/cubano/Cubano.ttf") format("truetype");
 }
 
+@font-face {
+  font-family: "Space Mono";
+  src: url("/fonts/space-mono/SpaceMono-Regular.ttf") format("truetype");
+}
+
 html,
 body {
   padding: 0;
@@ -20,10 +25,6 @@ body {
   /* background-color: #12181b; */
   background-color: #3a4366;
   color: white;
-}
-nav {
-  /* background-color: #3a4366; */
-  background-color: #1f2743;
 }
 
 h1 {
@@ -39,10 +40,13 @@ a {
   box-sizing: border-box;
 }
 
-.lesson-card {
+/* .lesson-card {
   background-color: #1f2743;
-  /* background-color: #2a2e35; */
-}
+  
+} */
+/* .file-name {
+  background-color: #1f2743;
+} */
 
 .tag-vscode {
   background: #00a3f8;
@@ -65,4 +69,12 @@ a {
 }
 .btn-discord {
   background-color: #5965f2;
+}
+
+.bluish-color {
+  background-color: #1f2743;
+}
+
+.code-font {
+  font-family: "Space Mono", monospace;
 }

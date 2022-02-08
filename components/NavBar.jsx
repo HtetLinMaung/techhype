@@ -1,8 +1,10 @@
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { useContext, useEffect } from "react";
 import { appContext } from "../contexts/AppProvider";
 
 export default function NavBar() {
+  const router = useRouter();
   const [state, dispatch] = useContext(appContext);
 
   const toggleLanguage = () => {
@@ -27,7 +29,7 @@ export default function NavBar() {
         }
       }
     }
-    elements = document.querySelectorAll(".lesson-card p");
+    elements = document.querySelectorAll("p");
     if (elements) {
       if (state.lang == "mm") {
         for (const element of elements) {
@@ -39,10 +41,22 @@ export default function NavBar() {
         }
       }
     }
-  }, [state.lang]);
+    elements = document.querySelectorAll(".center-title");
+    if (elements) {
+      if (state.lang == "mm") {
+        for (const element of elements) {
+          element.style.fontSize = "3rem";
+        }
+      } else {
+        for (const element of elements) {
+          element.style.fontSize = "3.75rem";
+        }
+      }
+    }
+  }, [state.lang, router.route]);
 
   return (
-    <nav className="sticky top-0 z-40 w-full">
+    <nav className="sticky top-0 z-40 w-full bluish-color">
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center py-4">
           <div className="flex items-center">
