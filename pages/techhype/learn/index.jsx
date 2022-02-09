@@ -2,10 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useContext, useEffect, useState } from "react";
 import { appContext } from "../../../contexts/AppProvider";
-import {
-  getTranslatation,
-  getTranslation,
-} from "../../../utils/language-translator";
+import { getTranslation } from "../../../utils/language-translator";
 
 const items = [
   {

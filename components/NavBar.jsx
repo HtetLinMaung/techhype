@@ -53,6 +53,18 @@ export default function NavBar() {
         }
       }
     }
+    elements = document.querySelectorAll(".sub-title");
+    if (elements) {
+      if (state.lang == "mm") {
+        for (const element of elements) {
+          element.style.fontSize = "1.3rem";
+        }
+      } else {
+        for (const element of elements) {
+          element.style.fontSize = "1.5rem";
+        }
+      }
+    }
   }, [state.lang, router.route]);
 
   return (

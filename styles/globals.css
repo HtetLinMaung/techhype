@@ -19,6 +19,7 @@
 
 html,
 body {
+  scroll-behavior: smooth;
   padding: 0;
   margin: 0;
   font-family: "Sofia Pro", sans-serif;
@@ -34,6 +35,10 @@ h1 {
 a {
   color: inherit;
   text-decoration: none;
+}
+#tableOfContents a:hover {
+  color: #4dbb92;
+  text-decoration: underline;
 }
 
 * {

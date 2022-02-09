@@ -19,19 +19,85 @@ const item = {
   ],
   author_profile: "/profiles/hlm.jpg",
   author_name: "Htet Lin Maung",
+  table_of_contents: [
+    {
+      label: "Launching from the command line",
+      href: "#launching-from-the-command-line",
+    },
+    {
+      label: "Searching files",
+      href: "#searching-files",
+    },
+    {
+      label: "Running Commands",
+      href: "#running-commands",
+    },
+    {
+      label: "Finding with CTRL + F",
+      href: "#finding-with-ctrl-f",
+    },
+    {
+      label: "Finding with symbols",
+      href: "#finding-with-symbols",
+    },
+    {
+      label: "Searching with line number & highlighting",
+      href: "#searching-with-line-number-and-highlighting",
+    },
+    {
+      label: "Multiline Editing",
+      href: "#multiline-editing",
+    },
+    {
+      label: "Cutting & moving",
+      href: "#cutting-and-moving",
+    },
+    {
+      label: "Toggling comments",
+      href: "#toggling-comments",
+    },
+    {
+      label: "Integrated Terminal",
+      href: "#integrated-terminal",
+    },
+    {
+      label: "Running Tasks",
+      href: "#running-tasks",
+    },
+    {
+      label: "Source Control",
+      href: "#source-control",
+    },
+    {
+      label: "Remote SSH",
+      href: "#remote-ssh",
+    },
+    {
+      label: "Auto-Creating folders",
+      href: "#auto-creating-folders",
+    },
+    {
+      label: "Pasting JSON as Type",
+      href: "#pasting-json-as-type",
+    },
+    {
+      label: "Renaming",
+      href: "#renaming",
+    },
+  ],
 };
 
 export default function VscodeTopTip() {
   const [state, dispatch] = useContext(appContext);
 
   return (
-    <div className="container mx-auto px-4 pt-10 text-xl">
+    <div className="px-3 lg:px-0 xl:px-0 2xl:px-0 container mx-auto py-10 text-xl">
       <h1 className="text-6xl my-12 pb-7 text-center center-title">
         {getTranslation(state.lang, "VSCODE Top Tips")}
       </h1>
 
-      <div className="flex">
-        <section className="w-3/4">
+      <div className="flex flex-wrap-reverse">
+        <section className="m-1 xl:w-3/4 sm:m-6 xl:m-0">
           <div className="lesson-card bluish-color overflow-hidden w-full rounded-xl shadow-lg inline-flex flex-col">
             <Image
               src={item.image}
@@ -65,7 +131,7 @@ export default function VscodeTopTip() {
                 <div className="text-sm text-gray-300">
                   <div className="mb-1">Created Feb, 4, 2022</div>
                   <span className="py-1 px-2 text-sm tag-last-updated mr-2 rounded-sm">
-                    Last Updated Feb, 4, 2022
+                    Last Updated Feb, 9, 2022
                   </span>
                 </div>
               </div>
@@ -125,7 +191,10 @@ export default function VscodeTopTip() {
               "Most of us think VS Code is a simple code editor. But it's not. To open project in your editor, you pull up your file explorer and then click open with VS Code. But you can do it more quickly from command line."
             )}
           </p>
-          <h1 className="my-6 text-2xl text-gray-300">
+          <h1
+            id="launching-from-the-command-line"
+            className="my-6 text-2xl text-gray-300 sub-title"
+          >
             {getTranslation(state.lang, "Launching from the command line")}
           </h1>
           <p className="text-lg leading-10  text-gray-300 my-5">
@@ -161,11 +230,17 @@ export default function VscodeTopTip() {
               code index.ts
             </pre>
           </div>
-          <h1 className="my-6 text-2xl text-gray-300">Searching for files</h1>
+          <h1
+            id="searching-files"
+            className="my-6 text-2xl text-gray-300 sub-title"
+          >
+            {getTranslation(state.lang, "Searching files")}
+          </h1>
           <p className="text-lg leading-10  text-gray-300 my-5">
-            You can search files quickly with Command Palette by typing CTRL + P
-            or Command + P. It is quicker than trying to find the files in your
-            file explorer.
+            {getTranslation(
+              state.lang,
+              "You can search files quickly with Command Palette by typing CTRL + P or Cmd + P. It is quicker than trying to find the files in your file explorer."
+            )}
           </p>
           <video
             src="/movies/CommandPallete.mov"
@@ -174,11 +249,17 @@ export default function VscodeTopTip() {
               e.target.play();
             }}
           ></video>
-          <h1 className="my-6 text-2xl text-gray-300">Running Commands</h1>
+          <h1
+            id="running-commands"
+            className="my-6 text-2xl text-gray-300 sub-title"
+          >
+            {getTranslation(state.lang, "Running Commands")}
+          </h1>
           <p className="text-lg leading-10  text-gray-300 my-5">
-            Command Palette can do more than finding files. If you type right
-            angle bracket {"'>'"}, it will give you access to all the commands
-            you can run on VS Code.
+            {getTranslation(
+              state.lang,
+              "Command Palette can do more than finding files. If you type right angle bracket '>', it will give you access to all the commands you can run on VS Code."
+            )}
           </p>
           <video
             src="/movies/CommandPallete2.mov"
@@ -187,11 +268,17 @@ export default function VscodeTopTip() {
               e.target.play();
             }}
           ></video>
-          <h1 className="my-6 text-2xl text-gray-300">Finding with CTRL + F</h1>
+          <h1
+            id="finding-with-ctrl-f"
+            className="my-6 text-2xl text-gray-300 sub-title"
+          >
+            {getTranslation(state.lang, "Finding with CTRL + F")}
+          </h1>
           <p className="text-lg leading-10  text-gray-300 my-5">
-            When working in a big file, the worst thing you do is scroll around
-            the page and looking for functions or interfaces. You can type CTRL
-            + F or Command + F to find the things you need.
+            {getTranslation(
+              state.lang,
+              "When working in a big file, the worst thing you do is scroll around the page and looking for functions or interfaces. You can type CTRL + F or Cmd + F to open the Find Widget in the editor. From there you can search the things you need."
+            )}
           </p>
           <video
             src="/movies/CtrlF.mov"
@@ -200,14 +287,17 @@ export default function VscodeTopTip() {
               e.target.play();
             }}
           ></video>
-          <h1 className="my-6 text-2xl text-gray-300">Finding with symbols</h1>
+          <h1
+            id="finding-with-symbols"
+            className="my-6 text-2xl text-gray-300 sub-title"
+          >
+            {getTranslation(state.lang, "Finding with symbols")}
+          </h1>
           <p className="text-lg leading-10  text-gray-300 my-5">
-            You can also use symbols in Command Palette to find things. With{" "}
-            {"'@'"} symbol, you can get symbol list to quickly navigate around
-            the page. You can also type CTRL + SHIFT + . or COMMAND + SHIFT + .
-            to do the same thing. But sometime you want to find symbol
-            throughout the entire project. You can also type {"'#'"} symbol in
-            Command Pallete to get a list of all symbols.
+            {getTranslation(
+              state.lang,
+              "You can also find with symbols in Command Palette. With '@' symbol, you can get symbol list to quickly navigate around the page. You can also type CTRL + SHIFT + . or Cmd + SHIFT + . to do the same thing. But sometime you want to find symbol throughout the entire project. You can also type '#' symbol in Command Pallete to get a list of all symbols."
+            )}
           </p>
           <video
             src="/movies/Symbol.mov"
@@ -217,14 +307,21 @@ export default function VscodeTopTip() {
             }}
           ></video>
 
-          <h1 className="my-6 text-2xl text-gray-300">
-            Line Number search & highlighting
+          <h1
+            id="searching-with-line-number-and-highlighting"
+            className="my-6 text-2xl text-gray-300 sub-title"
+          >
+            {getTranslation(
+              state.lang,
+              "Searching with line number & highlighting"
+            )}
           </h1>
 
           <p className="text-lg leading-10  text-gray-300 my-5">
-            You can jump to specific line by typing CTRL + G followed by line
-            number. From there you can highlight the line by holding SHIFT +
-            ARROW key.
+            {getTranslation(
+              state.lang,
+              "You can jump to specific line by typing CTRL + G followed by line number. From there you can highlight the line by holding SHIFT + ARROW key."
+            )}
           </p>
 
           <video
@@ -235,15 +332,18 @@ export default function VscodeTopTip() {
             }}
           ></video>
 
-          <h1 className="my-6 text-2xl text-gray-300">Multiline Editing</h1>
+          <h1
+            id="multiline-editing"
+            className="my-6 text-2xl text-gray-300 sub-title"
+          >
+            {getTranslation(state.lang, "Multiline Editing")}
+          </h1>
 
           <p className="text-lg leading-10  text-gray-300 my-5">
-            If you find the word you want to edit, type CTRL + D or COMMAND + D
-            to select it. If this word or code is multiple occurance, you can
-            edit them all by pressing CTRL + D or COMMAND + D multiple times.
-            Holding down ALT + CLICK or OPTION + CLICK with mouse can also be
-            used for multiline editing like renaming tags. But you can make it
-            more easier by using Auto Rename Tag extension.
+            {getTranslation(
+              state.lang,
+              "If you find the word you want to edit, type CTRL + D or Cmd + D to select it. If this word or code is multiple occurance, you can edit them all by pressing CTRL + D or Cmd + D multiple times. Holding down ALT + CLICK or OPTION + CLICK with mouse can also be used for multiline editing like renaming tags. But you can make it more easier by using Auto Rename Tag extension."
+            )}
           </p>
 
           <video
@@ -254,12 +354,18 @@ export default function VscodeTopTip() {
             }}
           ></video>
 
-          <h1 className="my-6 text-2xl text-gray-300">Cutting & moving</h1>
+          <h1
+            id="cutting-and-moving"
+            className="my-6 text-2xl text-gray-300 sub-title"
+          >
+            {getTranslation(state.lang, "Cutting & moving")}
+          </h1>
 
           <p className="text-lg leading-10  text-gray-300 my-5">
-            You {"don't"} need to select a line to cut it. You can just type
-            CTRL + X or COMMAND + X to cut the line. But if your goal is to move
-            a line, just type ALT + UP / DOWN or OPTION + UP / DOWN.
+            {getTranslation(
+              state.lang,
+              "You don't need to select a line to cut it. You can just type CTRL + X or Cmd + X to cut the line. But if your goal is to move a line, just type ALT + UP / DOWN or OPTION + UP / DOWN."
+            )}
           </p>
 
           <video
@@ -270,11 +376,17 @@ export default function VscodeTopTip() {
             }}
           ></video>
 
-          <h1 className="my-6 text-2xl text-gray-300">Toggling comments</h1>
+          <h1
+            id="toggling-comments"
+            className="my-6 text-2xl text-gray-300 sub-title"
+          >
+            {getTranslation(state.lang, "Toggling comments")}
+          </h1>
           <p className="text-lg leading-10  text-gray-300 my-5">
-            You can toggle comments by first highlighting your codes and typing
-            CTRL + / or COMMAND + /. You can make your comments more easier to
-            read with Better Comments Extension.
+            {getTranslation(
+              state.lang,
+              "You can toggle comments by first highlighting your codes and typing CTRL + / or Cmd + /. You can make your comments more easier to read with Better Comments Extension."
+            )}
           </p>
           <video
             src="/movies/Comments.mov"
@@ -283,11 +395,17 @@ export default function VscodeTopTip() {
               e.target.play();
             }}
           ></video>
-          <h1 className="my-6 text-2xl text-gray-300">Integrated Terminal</h1>
+          <h1
+            id="integrated-terminal"
+            className="my-6 text-2xl text-gray-300 sub-title"
+          >
+            Integrated Terminal
+          </h1>
           <p className="text-lg leading-10  text-gray-300 my-5">
-            You can open terminal directly in VS Code by typing CTRL + `. You
-            can also rename your terminal and change color or icon. To clear
-            terminal you can type CTRL + K or COMMAND + K.
+            {getTranslation(
+              state.lang,
+              "You can open terminal directly in VS Code by typing CTRL + `. You can also rename your terminal and change color or icon. To clear terminal you can type CTRL + K or Cmd + K."
+            )}
           </p>
           <video
             src="/movies/Terminal.mov"
@@ -296,10 +414,17 @@ export default function VscodeTopTip() {
               e.target.play();
             }}
           ></video>
-          <h1 className="my-6 text-2xl text-gray-300">Running Tasks</h1>
+          <h1
+            id="running-tasks"
+            className="my-6 text-2xl text-gray-300 sub-title"
+          >
+            {getTranslation(state.lang, "Running Tasks")}
+          </h1>
           <p className="text-lg leading-10  text-gray-300 my-5">
-            If you have to run repeated commands. You can configure tasks in VS
-            Code.
+            {getTranslation(
+              state.lang,
+              "If you have to run repeated commands. You can configure tasks in VS Code."
+            )}
           </p>
           <video
             src="/movies/Task.mov"
@@ -308,10 +433,17 @@ export default function VscodeTopTip() {
               e.target.play();
             }}
           ></video>
-          <h1 className="my-6 text-2xl text-gray-300">Source Control</h1>
+          <h1
+            id="source-control"
+            className="my-6 text-2xl text-gray-300 sub-title"
+          >
+            Source Control
+          </h1>
           <p className="text-lg leading-10  text-gray-300 my-5">
-            You {"don't"} need to know complex git commands. VS Code give all
-            the possible commands for you.
+            {getTranslation(
+              state.lang,
+              "You don't need to know complex git commands. VS Code give all the possible commands for you."
+            )}
           </p>
           <video
             src="/movies/SourceControl.mov"
@@ -320,11 +452,14 @@ export default function VscodeTopTip() {
               e.target.play();
             }}
           ></video>
-          <h1 className="my-6 text-2xl text-gray-300">Remote SSH Extension</h1>
+          <h1 id="remote-ssh" className="my-6 text-2xl text-gray-300 sub-title">
+            {getTranslation(state.lang, "Remote SSH")}
+          </h1>
           <p className="text-lg leading-10  text-gray-300 my-5">
-            Sometime you want to develop on the same operating system you deploy
-            or use more high performance than your local machine. You can use
-            Remote SSH Extension.
+            {getTranslation(
+              state.lang,
+              "Sometime you want to develop on the same operating system you deploy or use more high performance than your local machine. You can use Remote SSH Extension."
+            )}
           </p>
           <video
             src="/movies/SSH.mov"
@@ -333,11 +468,20 @@ export default function VscodeTopTip() {
               e.target.play();
             }}
           ></video>
-          <h1 className="my-6 text-2xl text-gray-300">Auto-Create folders</h1>
+
+          <h1
+            id="auto-creating-folders"
+            className="my-6 text-2xl text-gray-300 sub-title"
+          >
+            {getTranslation(state.lang, "Auto-Creating folders")}
+          </h1>
           <p className="text-lg leading-10  text-gray-300 my-5">
-            You can also create files in directories that {"doesn't"} exist yet.
-            Just type /foldername/filename. It will auto create folders for you.
+            {getTranslation(
+              state.lang,
+              "You can also create files in directories that doesn't exist yet. Just type /foldername/filename. It will auto create folders for you."
+            )}
           </p>
+
           <video
             src="/movies/AutoCreate.mov"
             muted
@@ -345,14 +489,20 @@ export default function VscodeTopTip() {
               e.target.play();
             }}
           ></video>
-          <h1 className="my-6 text-2xl text-gray-300">
-            Paste JSON as Code Extension
+
+          <h1
+            id="pasting-json-as-type"
+            className="my-6 text-2xl text-gray-300 sub-title"
+          >
+            {getTranslation(state.lang, "Pasting JSON as Type")}
           </h1>
           <p className="text-lg leading-10  text-gray-300 my-5">
-            When writing typescript code, declaring types and schemas for JSON
-            data is very time consuming. This extension will automatically
-            create types from JSON.
+            {getTranslation(
+              state.lang,
+              "When writing typescript code, declaring types and schemas for JSON data is very time consuming. Paste JSON as Code extension can automatically create types from JSON."
+            )}
           </p>
+
           <video
             src="/movies/PasteJson.mov"
             muted
@@ -360,15 +510,15 @@ export default function VscodeTopTip() {
               e.target.play();
             }}
           ></video>
-          <h1 className="my-6 text-2xl text-gray-300">Renaming</h1>
+
+          <h1 id="renaming" className="my-6 text-2xl text-gray-300 sub-title">
+            {getTranslation(state.lang, "Renaming")}
+          </h1>
           <p className="text-lg leading-10  text-gray-300 my-5">
-            Sometime you want to rename a function for a whole project because
-            of bad naming. The first thing you would do is find the whole
-            projects and rename it. It can be dangerous. The better idea is find
-            the function or name you want to edit and then right click it. There
-            you can find its all references and implementations. From there you
-            can use rename symbol options to rename it accross all of your
-            files.
+            {getTranslation(
+              state.lang,
+              "Sometime you want to rename a function for a whole project because of bad naming. The first thing you would do is find the whole projects and rename it. It can be dangerous. The better idea is find the function or name you want to edit and then right click it. There you can find its all references and implementations. From there you can use rename symbol options to rename it accross all of your files."
+            )}
           </p>
 
           <video
@@ -379,7 +529,26 @@ export default function VscodeTopTip() {
             }}
           ></video>
         </section>
-        <aside className=""></aside>
+        <aside className="w-full mx-1 sm:mx-6 xl:w-auto xl:mr-0 xl:ml-2">
+          <nav
+            id="tableOfContents"
+            className="sticky top-28 bluish-color rounded-xl shadow-lg p-3 overflow-y-auto"
+            style={{ maxHeight: "80vh" }}
+          >
+            <ul>
+              {item.table_of_contents.map((item, index) => (
+                <li
+                  key={`content${index}`}
+                  className="text-sm text-gray-300 p-2"
+                >
+                  <a href={item.href} className="ease-in-out duration-500">
+                    {getTranslation(state.lang, item.label)}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        </aside>
       </div>
     </div>
   );
