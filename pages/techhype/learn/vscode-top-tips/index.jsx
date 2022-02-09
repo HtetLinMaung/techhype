@@ -529,7 +529,7 @@ export default function VscodeTopTip() {
             }}
           ></video>
         </section>
-        <aside className="w-full mx-1 sm:mx-6 xl:w-auto xl:mr-0 xl:ml-2">
+        <aside className="w-full mx-1 mb-2 sm:mx-6 xl:w-auto xl:mr-0 xl:ml-2">
           <nav
             id="tableOfContents"
             className="sticky top-28 bluish-color rounded-xl shadow-lg p-3 overflow-y-auto"
