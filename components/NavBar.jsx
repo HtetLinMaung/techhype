@@ -79,25 +79,36 @@ export default function NavBar() {
             </div>
           </div>
           <div className="flex items-center">
-            <div className="mr-10 text-lg">
+            {/* <div className="mr-10 text-lg">
               <Link href="/techhype" passHref>
                 Home
               </Link>
-            </div>
+            </div> */}
             <div className="mr-10 text-lg">
               <Link href="/techhype/learn" passHref>
                 Learn
               </Link>
             </div>
-            <div className="text-lg">
+            <div className="mr-10 text-lg">
               <Link href="/techhype/blog" passHref>
                 Blog
+              </Link>
+            </div>
+            <div className="text-lg">
+              <Link href="/techhype/tag" passHref>
+                Tags
               </Link>
             </div>
           </div>
           <div className="flex items-center">
             <div>
               <svg
+                onClick={() =>
+                  dispatch({
+                    type: "SET_STATE",
+                    payload: { search_modal: true },
+                  })
+                }
                 aria-hidden="true"
                 focusable="false"
                 data-prefix="fad"

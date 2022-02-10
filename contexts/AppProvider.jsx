@@ -4,6 +4,7 @@ export const appContext = createContext(null);
 
 const initialState = {
   lang: "en",
+  search_modal: false,
 };
 
 export default function AppProvider({ children }) {

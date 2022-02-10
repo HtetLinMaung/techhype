@@ -1,106 +1,56 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { appContext } from "../../../../contexts/AppProvider";
 import { getTranslation } from "../../../../utils/language-translator";
 import Link from "next/link";
 import Image from "next/image";
+import config from "../../../../app.config.json";
+import moment from "moment";
+import rest from "../../../../utils/rest";
 
-const item = {
-  image: "/wallpapers/Vscode.PNG",
-  href: "/techhype/learn/vscode-top-tips",
-  title: "VSCODE Top Tips",
-  description: `Learn VS Code Productivity tips and tricks that will help you write code faster.`,
-  tags: [
-    {
-      text: "#vscode",
-      class:
-        "py-1 px-2 text-sm tag-vscode mr-2 rounded-sm cursor-pointer tracking-wider",
-      href: "/",
-    },
-  ],
-  author_profile: "/profiles/hlm.jpg",
-  author_name: "Htet Lin Maung",
-  table_of_contents: [
-    {
-      label: "Launching from the command line",
-      href: "#launching-from-the-command-line",
-    },
-    {
-      label: "Searching files",
-      href: "#searching-files",
-    },
-    {
-      label: "Running Commands",
-      href: "#running-commands",
-    },
-    {
-      label: "Finding with CTRL + F",
-      href: "#finding-with-ctrl-f",
-    },
-    {
-      label: "Finding with symbols",
-      href: "#finding-with-symbols",
-    },
-    {
-      label: "Searching with line number & highlighting",
-      href: "#searching-with-line-number-and-highlighting",
-    },
-    {
-      label: "Multiline Editing",
-      href: "#multiline-editing",
-    },
-    {
-      label: "Cutting & moving",
-      href: "#cutting-and-moving",
-    },
-    {
-      label: "Toggling comments",
-      href: "#toggling-comments",
-    },
-    {
-      label: "Integrated Terminal",
-      href: "#integrated-terminal",
-    },
-    {
-      label: "Running Tasks",
-      href: "#running-tasks",
-    },
-    {
-      label: "Source Control",
-      href: "#source-control",
-    },
-    {
-      label: "Remote SSH",
-      href: "#remote-ssh",
-    },
-    {
-      label: "Auto-Creating folders",
-      href: "#auto-creating-folders",
-    },
-    {
-      label: "Pasting JSON as Type",
-      href: "#pasting-json-as-type",
-    },
-    {
-      label: "Renaming",
-      href: "#renaming",
-    },
-  ],
-};
-
-export default function VscodeTopTip() {
+export default function VscodeTopTip({ item }) {
   const [state, dispatch] = useContext(appContext);
+
+  useEffect(() => {
+    const elements = document.querySelectorAll(".code-container");
+    if (elements) {
+      for (const element of elements) {
+        element.addEventListener("click", (e) => {
+          console.log("click");
+          // copy to window clipboard
+          const text = e.target.innerText;
+          navigator.clipboard.writeText(text);
+          const toast = document.createElement("div");
+          toast.style.transform = "scale(0) translateX(50%)";
+          toast.className =
+            "py-3 px-5 sm:pr-28 md:pr-28 lg:pr-28 xl:pr-28 rounded-lg top-16 right-1/2 fixed z-50 text-base flex items-center justify-center bg-white text-black translate-x-1/2 ease-in-out duration-300";
+          toast.innerText = "Copied to clipboard";
+          const body = document.querySelector("body");
+          body.appendChild(toast);
+          setTimeout(() => {
+            toast.style.transform = "scale(1) translateX(50%)";
+          }, 500);
+          setTimeout(() => {
+            toast.style.transform = "scale(0) translateX(50%)";
+            setTimeout(() => {
+              body.removeChild(toast);
+            }, 500);
+          }, 3000);
+        });
+      }
+    }
+  }, []);
 
   return (
     <div className="px-3 lg:px-0 xl:px-0 2xl:px-0 container mx-auto py-10 text-xl">
       <h1 className="text-6xl my-12 pb-7 text-center center-title">
-        {getTranslation(state.lang, "VSCODE Top Tips")}
+        {getTranslation(state.lang, item.title)}
       </h1>
 
       <div className="flex flex-wrap-reverse">
         <section className="m-1 xl:w-3/4 sm:m-6 xl:m-0">
           <div className="lesson-card bluish-color overflow-hidden w-full rounded-xl shadow-lg inline-flex flex-col">
             <Image
-              src={item.image}
+              src={config.server + item.wallpaper}
               alt={item.title}
               width={1920}
               height={1024}
@@ -115,7 +65,7 @@ export default function VscodeTopTip() {
                   <div className="mr-2">
                     <Image
                       className="rounded-full"
-                      src={item.author_profile}
+                      src={config.server + item.author_profile}
                       alt={item.author_name}
                       width={48}
                       height={48}
@@ -129,9 +79,13 @@ export default function VscodeTopTip() {
                   </div>
                 </div>
                 <div className="text-sm text-gray-300">
-                  <div className="mb-1">Created Feb, 4, 2022</div>
+                  {/* Last Updated Feb, 9, 2022 */}
+                  <div className="mb-1">
+                    Created {moment(item.created_at).format("MMMM Do YYYY")}
+                  </div>
                   <span className="py-1 px-2 text-sm tag-last-updated mr-2 rounded-sm">
-                    Last Updated Feb, 9, 2022
+                    Last Updated{" "}
+                    {moment(item.updated_at).format("MMMM Do YYYY")}
                   </span>
                 </div>
               </div>
@@ -157,7 +111,7 @@ export default function VscodeTopTip() {
 
                   <button
                     onClick={() => {
-                      location.href = "https://discord.gg/Vtbr55QY";
+                      location.href = item.discord_url;
                     }}
                     className="text-sm font-bold btn-discord  py-3 px-6 hover:-translate-y-1 ease-in-out duration-300 m-1 rounded-md flex  justify-items-center items-center"
                   >
@@ -177,8 +131,13 @@ export default function VscodeTopTip() {
                 </div>
                 <div>
                   {item.tags.map((tag, i) => (
-                    <Link key={`tag${i}`} href={tag.href} passHref>
-                      <span className={tag.class}>{tag.text}</span>
+                    <Link key={tag._id} href={tag.href} passHref>
+                      <span
+                        className="py-1 px-2 text-sm mr-2 rounded-sm cursor-pointer tracking-wider"
+                        style={{ background: tag.background, color: tag.color }}
+                      >
+                        {tag.label}
+                      </span>
                     </Link>
                   ))}
                 </div>
@@ -220,7 +179,7 @@ export default function VscodeTopTip() {
             </svg>{" "}
             command line
           </div>
-          <div className="p-5 mb-4 bluish-color shadow-lg rounded-r-xl rounded-b-xl ">
+          <div className="p-5 mb-4 bluish-color shadow-lg rounded-r-xl rounded-b-xl code-container">
             <pre className="code-font text-base text-gray-300 font-normal">
               <span className="text-gray-500">
                 {"# open current directory \n"}
@@ -552,4 +511,19 @@ export default function VscodeTopTip() {
       </div>
     </div>
   );
+}
+
+export async function getServerSideProps(context) {
+  let item = null;
+  const [res, err] = await rest.get("/lessons/vscode-top-tips");
+
+  if (!err) {
+    item = res.data.data;
+  }
+
+  return {
+    props: {
+      item,
+    },
+  };
 }

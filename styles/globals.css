@@ -53,14 +53,14 @@ a {
   background-color: #1f2743;
 } */
 
-.tag-vscode {
+/* .tag-vscode {
   background: #00a3f8;
   color: white;
 }
 .tag-firebase {
   background: #ffcb2b;
   color: #12181a;
-}
+} */
 
 .tag {
   border-radius: 2px;
@@ -79,7 +79,21 @@ a {
 .bluish-color {
   background-color: #1f2743;
 }
+a.bluish-color {
+  transition: all 0.3s;
+}
+a.bluish-color:focus,
+a.bluish-color:hover {
+  background-color: #293150;
+}
+.search-item-highlight {
+  color: #4dbb92;
+  font-style: italic;
+}
 
 .code-font {
   font-family: "Space Mono", monospace;
+}
+.search-input {
+  font-family: "Sofia Pro", sans-serif;
 }
