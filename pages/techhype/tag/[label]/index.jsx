@@ -63,7 +63,6 @@ export async function getServerSideProps(context) {
     });
     if (!err) {
       items = res.data.data;
-      console.log(items);
     }
   }
 

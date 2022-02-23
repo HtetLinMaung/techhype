@@ -13,7 +13,6 @@ export default function NavBar() {
     } else {
       dispatch({ type: "SET_STATE", payload: { lang: "en" } });
     }
-    console.log(state.lang);
   };
 
   useEffect(() => {

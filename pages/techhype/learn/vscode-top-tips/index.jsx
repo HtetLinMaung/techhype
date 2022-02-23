@@ -15,7 +15,6 @@ export default function VscodeTopTip({ item }) {
     if (elements) {
       for (const element of elements) {
         element.addEventListener("click", (e) => {
-          console.log("click");
           // copy to window clipboard
           const text = e.target.innerText;
           navigator.clipboard.writeText(text);
@@ -81,33 +80,42 @@ export default function VscodeTopTip({ item }) {
                 <div className="text-sm text-gray-300">
                   {/* Last Updated Feb, 9, 2022 */}
                   <div className="mb-1">
-                    Created {moment(item.created_at).format("MMMM Do YYYY")}
+                    Created {moment(item.created_at).format("MMM, DD, YYYY")}
                   </div>
                   <span className="py-1 px-2 text-sm tag-last-updated mr-2 rounded-sm">
                     Last Updated{" "}
-                    {moment(item.updated_at).format("MMMM Do YYYY")}
+                    {moment(item.created_at).format("MMM, DD, YYYY")}
                   </span>
                 </div>
               </div>
               <div className="w-full flex flex-col p-3 items-end">
                 <div className="flex mb-auto">
-                  {/* <button className="text-sm font-bold btn-code text-black py-2 px-6 hover:-translate-y-1 ease-in-out duration-300 m-1 rounded-md flex  justify-items-center items-center">
-                    <svg
-                      aria-hidden="true"
-                      data-prefix="far"
-                      data-icon="code-merge"
-                      role="img"
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 384 512"
-                      className="svgcode-merge w-3 mr-2"
+                  {item.git_url ? (
+                    <button
+                      onClick={() => {
+                        location.href = item.git_url;
+                      }}
+                      className="text-sm font-bold btn-code text-black py-2 px-6 hover:-translate-y-1 ease-in-out duration-300 m-1 rounded-md flex  justify-items-center items-center"
                     >
-                      <path
-                        fill="currentColor"
-                        d="M304 192c-38 0-69.8 26.5-77.9 62-23.9-3.5-58-12.9-83.9-37.6-16.6-15.9-27.9-36.5-33.7-61.6C138.6 143.3 160 114.1 160 80c0-44.2-35.8-80-80-80S0 35.8 0 80c0 35.8 23.5 66.1 56 76.3v199.3C23.5 365.9 0 396.2 0 432c0 44.2 35.8 80 80 80s80-35.8 80-80c0-35.8-23.5-66.1-56-76.3V246.1c1.6 1.7 3.3 3.4 5 5 39.3 37.5 90.4 48.6 121.2 51.8 12.1 28.9 40.6 49.2 73.8 49.2 44.2 0 80-35.8 80-80S348.2 192 304 192zM80 48c17.6 0 32 14.4 32 32s-14.4 32-32 32-32-14.4-32-32 14.4-32 32-32zm0 416c-17.6 0-32-14.4-32-32s14.4-32 32-32 32 14.4 32 32-14.4 32-32 32zm224-160c-17.6 0-32-14.4-32-32s14.4-32 32-32 32 14.4 32 32-14.4 32-32 32z"
-                      ></path>
-                    </svg>{" "}
-                    CODE
-                  </button> */}
+                      <svg
+                        aria-hidden="true"
+                        data-prefix="far"
+                        data-icon="code-merge"
+                        role="img"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 384 512"
+                        className="svgcode-merge w-3 mr-2"
+                      >
+                        <path
+                          fill="currentColor"
+                          d="M304 192c-38 0-69.8 26.5-77.9 62-23.9-3.5-58-12.9-83.9-37.6-16.6-15.9-27.9-36.5-33.7-61.6C138.6 143.3 160 114.1 160 80c0-44.2-35.8-80-80-80S0 35.8 0 80c0 35.8 23.5 66.1 56 76.3v199.3C23.5 365.9 0 396.2 0 432c0 44.2 35.8 80 80 80s80-35.8 80-80c0-35.8-23.5-66.1-56-76.3V246.1c1.6 1.7 3.3 3.4 5 5 39.3 37.5 90.4 48.6 121.2 51.8 12.1 28.9 40.6 49.2 73.8 49.2 44.2 0 80-35.8 80-80S348.2 192 304 192zM80 48c17.6 0 32 14.4 32 32s-14.4 32-32 32-32-14.4-32-32 14.4-32 32-32zm0 416c-17.6 0-32-14.4-32-32s14.4-32 32-32 32 14.4 32 32-14.4 32-32 32zm224-160c-17.6 0-32-14.4-32-32s14.4-32 32-32 32 14.4 32 32-14.4 32-32 32z"
+                        ></path>
+                      </svg>{" "}
+                      CODE
+                    </button>
+                  ) : (
+                    ""
+                  )}
 
                   <button
                     onClick={() => {

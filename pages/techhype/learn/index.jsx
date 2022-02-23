@@ -6,25 +6,6 @@ import { getTranslation } from "../../../utils/language-translator";
 import rest from "../../../utils/rest";
 import config from "../../../app.config.json";
 
-// const items = [
-//   {
-//     image: "/wallpapers/Vscode.PNG",
-//     href: "/techhype/learn/vscode-top-tips",
-//     title: "VSCODE Top Tips",
-//     description: `Learn VS Code Productivity tips and tricks that will help you write code faster.`,
-//     tags: [
-//       {
-//         text: "#vscode",
-//         class:
-//           "py-1 px-2 text-sm tag-vscode mr-2 rounded-sm cursor-pointer tracking-wider",
-//         href: "/",
-//       },
-//     ],
-//     author_profile: "/profiles/hlm.jpg",
-//     author_name: "Htet Lin Maung",
-//   },
-// ];
-
 export default function Learn({ items }) {
   const [state, dispatch] = useContext(appContext);
 
